@@ -1,0 +1,16 @@
+#include<stdio.h>
+#include<pthread.h>
+
+void *threadFunction(void *arg)
+{
+    printf("Hello Thread\n");
+    return NULL;
+}
+
+int main()
+{
+    pthread_t tid;
+    pthread_create(&tid,NULL,threadFunction,NULL);
+    pthread_join(tid,NULL);
+    return 0;
+}
