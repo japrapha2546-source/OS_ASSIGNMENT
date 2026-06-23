@@ -1,0 +1,13 @@
+#include<stdio.h>
+#include<arpa/inet.h>
+int main()
+{
+    int sockfd;
+    struct sockaddr_in receiver;
+    sockfd=socket(AF_INET,SOCK_DGRAM,0);
+    receiver.sin_family=AF_INET;
+    receiver.sin_port=htons(8080);
+    receiver.sin_addr.s_addr=inet_addr("127.0.0.1");
+    sendto(sockfd,"Hello UDP",10,0,(struct sockaddr *)&receiver,sizeof(receiver));
+    return 0;
+}
